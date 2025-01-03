@@ -21,7 +21,25 @@ const ChatMain = forwardRef(({ messages, username }, ref) => {
                   : "bg-gray-500 text-left"
               }`}
             >
-              {msg.text}
+              <div className="flex gap-2">
+                {msg.sender === username ? (
+                  <img
+                    className="w-10 h-10"
+                    src="https://avatar.iran.liara.run/public/40"
+                    alt="random avatar"
+                  />
+                ) : (
+                  <img
+                    className="w-10 h-10"
+                    src="https://avatar.iran.liara.run/public/26"
+                    alt="random avatar"
+                  />
+                )}
+                <div className="flex flex-col justify-center items-start">
+                  <span className="text-sm font-bold">{msg.sender}</span>
+                  <span className="text-sm">{msg.text}</span>
+                </div>
+              </div>
             </div>
           </li>
         ))}

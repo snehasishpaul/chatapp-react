@@ -3,27 +3,29 @@ import ChatHeader from "../chat/ChatHeader";
 import ChatMain from "../chat/ChatMain";
 import ChatFooter from "../chat/ChatFooter";
 
+const chatMessages = [
+  { sender: "Alice", text: "Hi, everyone!" },
+  { sender: "username", text: "Hello, Alice!" },
+  { sender: "Bob", text: "Hey, how's it going?" },
+  { sender: "username", text: "I'm good, thanks for asking!" },
+  { sender: "Alice", text: "What are we working on today?" },
+  { sender: "username", text: "We're discussing project deadlines." },
+  { sender: "Alice", text: "Hi, everyone!" },
+  { sender: "username", text: "Hello, Alice!" },
+  { sender: "Bob", text: "Hey, how's it going?" },
+  { sender: "username", text: "I'm good, thanks for asking!" },
+  { sender: "Alice", text: "What are we working on today?" },
+  { sender: "username", text: "We're discussing project deadlines." },
+  { sender: "Alice", text: "Hi, everyone!" },
+  { sender: "username", text: "Hello, Alice!" },
+  { sender: "Bob", text: "Hey, how's it going?" },
+  { sender: "username", text: "I'm good, thanks for asking!" },
+  { sender: "Alice", text: "What are we working on today?" },
+  { sender: "username", text: "We're discussing project deadlines." },
+];
+
 const ChatWindowPage = () => {
-  const [messages, setMessages] = useState([
-    { sender: "Alice", text: "Hi, everyone!" },
-    { sender: "username", text: "Hello, Alice!" },
-    { sender: "Bob", text: "Hey, how's it going?" },
-    { sender: "username", text: "I'm good, thanks for asking!" },
-    { sender: "Alice", text: "What are we working on today?" },
-    { sender: "username", text: "We're discussing project deadlines." },
-    { sender: "Alice", text: "Hi, everyone!" },
-    { sender: "username", text: "Hello, Alice!" },
-    { sender: "Bob", text: "Hey, how's it going?" },
-    { sender: "username", text: "I'm good, thanks for asking!" },
-    { sender: "Alice", text: "What are we working on today?" },
-    { sender: "username", text: "We're discussing project deadlines." },
-    { sender: "Alice", text: "Hi, everyone!" },
-    { sender: "username", text: "Hello, Alice!" },
-    { sender: "Bob", text: "Hey, how's it going?" },
-    { sender: "username", text: "I'm good, thanks for asking!" },
-    { sender: "Alice", text: "What are we working on today?" },
-    { sender: "username", text: "We're discussing project deadlines." },
-  ]);
+  const [messages, setMessages] = useState(chatMessages);
   const [message, setMessage] = useState("");
   const messageBoxRef = useRef(null);
 
@@ -63,7 +65,8 @@ const ChatWindowPage = () => {
 
       {/* Footer */}
       <ChatFooter
-        onSetMessage={setMessages}
+        message={message}
+        onSetMessage={setMessage}
         onHandleSend={handleSend}
         onHandleFileSend={handleFileSend}
       />
