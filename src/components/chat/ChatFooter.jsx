@@ -5,7 +5,7 @@ import Button from "../util/Button";
 const ChatFooter = ({
   message,
   onSetMessage,
-  onHandleSend,
+  onHandleMessageSend,
   onHandleFileSend,
 }) => {
   return (
@@ -14,6 +14,12 @@ const ChatFooter = ({
         type="text"
         value={message}
         onChange={(e) => onSetMessage(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            onHandleMessageSend();
+          }
+        }}
         placeholder="Type your message..."
         className="flex-1 px-4 py-2 border rounded-full"
       />
@@ -22,7 +28,7 @@ const ChatFooter = ({
         <input type="file" onChange={onHandleFileSend} className="hidden" />
       </label>
       <Button
-        onClick={onHandleSend}
+        onClick={onHandleMessageSend}
         className="px-2 py-2 bg-green-500 text-white hover:bg-green-700"
       >
         <TbSend />

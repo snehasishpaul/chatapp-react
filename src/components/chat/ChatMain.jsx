@@ -1,4 +1,5 @@
 import { forwardRef } from "react";
+import { timeAgo } from "../services/helper";
 
 const ChatMain = forwardRef(({ messages, username }, ref) => {
   return (
@@ -37,7 +38,10 @@ const ChatMain = forwardRef(({ messages, username }, ref) => {
                 )}
                 <div className="flex flex-col justify-center items-start">
                   <span className="text-sm font-bold">{msg.sender}</span>
-                  <span className="text-sm">{msg.text}</span>
+                  <span className="text-sm">{msg.content}</span>
+                  <span className="text-sm text-gray-400">
+                    {timeAgo(msg.timestamp)}
+                  </span>
                 </div>
               </div>
             </div>
